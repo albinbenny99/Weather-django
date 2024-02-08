@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'videos',
     'bootstrap4',
     'blog',
+    'accounts',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +74,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'weather.wsgi.application'
+AUTH_USER_MODEL='accounts.Account'
+
 
 
 # Database
@@ -123,8 +127,19 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS=[
     BASE_DIR/"static"
 ]
+from django.contrib.messages import constants as messages
 
+MESSAGE_TAGS = {
+    messages.ERROR:'danger',
+    
+}
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'albin99.in@gmail.com'
+EMAIL_HOST_PASSWORD = 'ersn cdzm uzbz tdhi'
